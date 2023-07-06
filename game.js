@@ -8,13 +8,21 @@ let upButton= document.querySelector("#up");
 let downButton= document.querySelector("#down");
 let leftButton= document.querySelector("#left");
 let rightButton= document.querySelector("#right");
-let spanlives = document.querySelector("#lives");
+let spanLives = document.querySelector("#lives");
+let spanTime = document.querySelector("#time");
+let spanRecord = document.querySelector("#record");
+let pResult = document.querySelector("#result");
 
 let canvasSize;
 let elementsSize;
 let level = 0;
 let lives = 3;
+let timeStart;
+let timePlayer;
+let timeInterval;
 
+canvas.height = canvas.height.toFixed(0);
+canvas.width = canvas.width.toFixed(0);
 const playerPosition = {
     x: undefined,
     y: undefined,
@@ -30,12 +38,12 @@ let enemyPosition = [];
 window.addEventListener("load",setCanvasSize);
 window.addEventListener("resize", setCanvasSize)
 
-   function setCanvasSize(){
+function setCanvasSize(){
     if (window.innerHeight > window.innerWidth){
         canvasSize= window.innerWidth * 0.7;
     }
     else {canvasSize = window.innerHeight *0.7}
-
+    
    canvas.setAttribute("width", canvasSize)
    canvas.setAttribute("height",canvasSize)
 
@@ -53,11 +61,19 @@ function startGame() {
     if (!map){
         gameWin()
         return;
+        
+    }
+
+    if (!timeStart){
+        timeStart = Date.now();
+        timeInterval = setInterval(showTime,100)
+        saveRecord();
     }
     const mapRows = map.trim().split("\n");
     const mapRowsCols= mapRows.map(row=>row.trim().split(""));
 
     showLives();
+    showTime();
 
     enemyPosition = [];
 
@@ -116,11 +132,32 @@ function movePlayer () {
     console.log(playerPosition.x,playerPosition.y);
     } 
 function gameWin(){
-    console.log("felicitaciones");
+    clearInterval(timeInterval);
+    const recordTime= localStorage.getItem("record_time");
+    const playerTime = (Date.now()-timeStart)/1000;
+   
+    if (recordTime){
+        if (recordTime>= playerTime){
+            localStorage.setItem("record_time",playerTime);
+            pResult.innerHTML= "You're a legend!";
+        } else pResult.innerHTML= "Good luck next time";
+    }else {
+        localStorage.setItem("record_time",playerTime);
+        pResult.innerHTML= "Good, but you can do it much better :)";
+    }
+    
 }
 
 function showLives(){
-        spanlives.innerHTML = emojis["HEART"].repeat(lives);
+    spanLives.innerHTML = emojis["HEART"].repeat(lives);
+}
+
+function showTime(){
+    spanTime.innerHTML = (Date.now()-timeStart)/1000;
+}
+
+function saveRecord(){
+    spanRecord.innerHTML = localStorage.getItem('record_time');
 }
 
 function levelWin(){
@@ -134,7 +171,7 @@ function levelFail(){
     if (lives<=0){
     level=0;
     lives=3;
-
+    timeStart = undefined;
     }
     playerPosition.x = undefined;
     playerPosition.y = undefined;
@@ -163,6 +200,7 @@ function renderMap(){
 
             })});
 }
+
 
 let arrowUp= window.addEventListener("keydown",validar);
 let arrowDown= window.addEventListener("keydown",validar);

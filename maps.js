@@ -13,8 +13,7 @@ const emojis = {
     'GAME_OVER': '👎',
     'WIN': '🏆',
     "D": "😈",
-    "HEART": "❤️"
-    
+    "HEART": "❤️",
   };
   
   const maps = [];
@@ -53,17 +52,4 @@ const emojis = {
     XX-XXXXXXX
     XX-----OXX
     XXXXXXXXXX
-  `);
-
-  const lose = []; 
-  lose.push= (`
-  DDDDDDDDDD
-  DDDDDDDDDD
-  DDDDDDDDDD
-  DDDDDDDDDD
-  DDDDDDDDDD
-  DDDDDDDDDD
-  DDDDDDDDDD
-  DDDDDDDDDD
-  DDDDDDDDDD
   `);
