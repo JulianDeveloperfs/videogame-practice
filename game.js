@@ -23,6 +23,7 @@ let timeInterval;
 
 canvas.height = canvas.height.toFixed(0);
 canvas.width = canvas.width.toFixed(0);
+
 const playerPosition = {
     x: undefined,
     y: undefined,
@@ -40,13 +41,15 @@ window.addEventListener("resize", setCanvasSize)
 
 function setCanvasSize(){
     if (window.innerHeight > window.innerWidth){
-        canvasSize= window.innerWidth * 0.7;
+        canvasSize = parseInt(window.innerWidth * 0.5);
     }
-    else {canvasSize = window.innerHeight *0.7}
+    else {canvasSize = parseInt(window.innerHeight *0.5)}
     
    canvas.setAttribute("width", canvasSize)
    canvas.setAttribute("height",canvasSize)
 
+   canvasSize = canvasSize.toFixed(0);
+   
    elementsSize = (canvasSize /10) -1;
    startGame();
 }
@@ -108,16 +111,16 @@ function startGame() {
 }
 
 function movePlayer () {
-    const giftCollisionX = playerPosition.x.toFixed(3)==giftPosition.x.toFixed(3);
-    const giftCollisionY = playerPosition.y.toFixed(3)==giftPosition.y.toFixed(3);
+    const giftCollisionX = playerPosition.x.toFixed(1)==giftPosition.x.toFixed(1);
+    const giftCollisionY = playerPosition.y.toFixed(1)==giftPosition.y.toFixed(1);
     const giftCollision= giftCollisionX && giftCollisionY;
 
     if (giftCollision){
         levelWin();
     }
         const enemyCollision= enemyPosition.find(enemy => {
-        const enemyCollisionX = enemy.x.toFixed(3) == playerPosition.x.toFixed(3)
-        const enemyCollisionY = enemy.y.toFixed(3) == playerPosition.y.toFixed(3)
+        const enemyCollisionX = enemy.x.toFixed(1) == playerPosition.x.toFixed(1)
+        const enemyCollisionY = enemy.y.toFixed(1) == playerPosition.y.toFixed(1)
         return enemyCollisionX && enemyCollisionY;
     });
 
@@ -172,6 +175,7 @@ function levelFail(){
     level=0;
     lives=3;
     timeStart = undefined;
+    pResult.innerHTML= "You lose, try again!";
     }
     playerPosition.x = undefined;
     playerPosition.y = undefined;

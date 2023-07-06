@@ -23,6 +23,7 @@ body {
     justify-content: center;
     flex-wrap: wrap;
     width: 100%;
+    #up, #down {margin-left: 100%; margin-right: 100%;}
 }
 
 button {
