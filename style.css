@@ -1,44 +1,74 @@
 body {
-    background: #1af;
+    background: #000;
     font-family: sans-serif;
+    overflow: hidden; 
 }
 
 .game-container {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap:wrap;
     justify-content: center;
     align-items: center;
     width: 100vw;
     height: 100vh;
+    background-image:  url("./images/gameboy.png"),url("./images/fondo.jpg");
+    background-size:50vh,auto;
+    background-repeat: no-repeat, no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+
 }
 
 #game {
-    border: 4px solid #777;
+    border: 4px solid #000;
     border-radius: 8px;    
-    background-color: #fff;
-
+    background-color: #000;
+    display: flex;
+    margin-top: 6vh;
+    margin-left: 5vh;
+    height: 31.5vh;
+    width: 22vw;
 }
 .btns{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     width: 100%;
-    #up, #down {margin-left: 100%; margin-right: 100%;}
+    margin-bottom: 20.5vh;
+    margin-right: 29vh;
+    #up, #down {margin-left: 100%; margin-right: 100%;};
 }
 
 button {
-    background-color: #fff;
-    border: 2px solid #777;
+    margin-top: 0;
+    background-color: #333;
     border-radius: 4px;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-top: 10px;
+    padding: 15px 21px;;
     color: #222;
-    
+    margin: 5px 10px 0px;
+
 }
+.rotate-button {
+    transform: rotate(90deg);
+  }
+
+.messages{
+    position: absolute;
+    font-size:2vh;
+    left: 75%;
+    top: 20%;
+}
+p {
+    text-align: center;    
+    background-color: #000;
+    padding: 10px;
+    border-radius: 5px;
+    color: #1bF;
+    text-shadow: 0 0 5px #1bF,0 0 5px #1bF, 0 0 5px #1bF,0 0 5px #1bF ;
+}
+
 
 @media (max-width:440px) {
     button {margin-top:     5px;}
-    #up, #down {margin-left: 100%; margin-right: 100%;}
 }
 

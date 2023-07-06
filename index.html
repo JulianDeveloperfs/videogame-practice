@@ -9,19 +9,18 @@
 <body>
     <div class="game-container">
         <canvas id="game"></canvas>
-
         <div class="btns">
-            <button id="up">Arriba</button>
-            <button id="left">Izquierda</button>
-            <button id="right">Derecha</button>
-            <button id="down">Abajo</button>
+            <button id="up" class="rotate-button"></button>
+            <button id="left"></button>
+            <button id="right"></button>
+            <button id="down" class="rotate-button"></button>
         </div>
 
         <div class="messages">
             <p>Lives: <span id="lives"> </span></p>
             <p>🧭 Time: <span id="time"></span> s</p> 
-            <p>🏁 Record: <span id="record"></span></p> 
-            <p id="result"></p> 
+            <p>🏁 Record: <span id="record"></span> s</p> 
+            <p id="result">You can do it! 😀</p> 
         </div>
     </div>
     <script src="maps.js"></script>
