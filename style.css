@@ -27,7 +27,8 @@ body {
     margin-top: 6vh;
     margin-left: 5vh;
     height: 31.5vh;
-    width: 22vw;
+    width: 36vh;
+    margin-bottom: 0px;
 }
 .btns{
     display: flex;
@@ -68,7 +69,43 @@ p {
 }
 
 
-@media (max-width:440px) {
-    button {margin-top:     5px;}
+
+@media (max-width:700px){
+    .messages{ display: flex;
+        position:static;
+        justify-content: center;
+        align-items: start;
+        flex-wrap: wrap;
+        
+    }
+    .btns{
+        margin-bottom:3vh;
+    }
+    p{
+    margin-top: 0px;
+    margin-bottom: 0px;}
+    .game-container{
+    background-size:50vh,auto;
+    background-position: center center;
+    background-attachment: fixed;
+    }
 }
 
+@media (max-width:500px){
+    .btns{
+        margin-top:3vh;
+    }
+    .game-container{
+        margin-top: 2.5vh;
+    }
+}
+
+@media (max-width: 350px) {
+    body {
+      min-width: 350px;
+      overflow-x: hidden;
+    }
+        .btns{
+
+    }
+}
