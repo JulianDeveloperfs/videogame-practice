@@ -4,6 +4,9 @@
 
 const canvas = document.querySelector("#game");
 const game = canvas.getContext("2d");
+let menuWelcome = document.querySelector("#welcome-menu");
+let startButton = document.querySelector("#start-button");
+let gameContainer = document.querySelector("#game-container");
 let upButton= document.querySelector("#up");
 let downButton= document.querySelector("#down");
 let leftButton= document.querySelector("#left");
@@ -21,8 +24,10 @@ let timeStart;
 let timePlayer;
 let timeInterval;
 
+
 canvas.height = canvas.height.toFixed(0);
 canvas.width = canvas.width.toFixed(0);
+
 
 const playerPosition = {
     x: undefined,
@@ -35,9 +40,10 @@ const giftPosition = {
 }
 
 let enemyPosition = [];
-
 window.addEventListener("load",setCanvasSize);
-window.addEventListener("resize", setCanvasSize)
+window.addEventListener("resize", setCanvasSize);
+startButton.addEventListener("click", startGame);
+
 
 function setCanvasSize(){
     if (window.innerHeight > window.innerWidth){
@@ -51,11 +57,10 @@ function setCanvasSize(){
    canvasSize = canvasSize.toFixed(0);
    
    elementsSize = (canvasSize /10) -1;
-   startGame();
 }
 
 function startGame() {
-
+    menuWelcome.style.display = "none";
     game.font = elementsSize +"px Verdana";
     game.textAlign= "";
 
@@ -136,7 +141,7 @@ function movePlayer () {
 function gameWin(){
     clearInterval(timeInterval);
     const recordTime= localStorage.getItem("record_time");
-    const playerTime = (Date.now()-timeStart)/1000;
+    const playerTime = Number((Date.now()-timeStart)/1000);
    
     if (recordTime){
         if (recordTime>= playerTime){
@@ -155,7 +160,7 @@ function showLives(){
 }
 
 function showTime(){
-    spanTime.innerHTML = (Date.now()-timeStart)/1000;
+    spanTime.innerHTML = ((Date.now()-timeStart)/1000).toFixed(3);
 }
 
 function saveRecord(){
@@ -203,6 +208,7 @@ function renderMap(){
 
             })});
 }
+
 
 
 let arrowUp= window.addEventListener("keydown",validar);
