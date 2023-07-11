@@ -10,16 +10,17 @@ body {
 }
 .game-container {
     display: flex;
-    flex-wrap:wrap;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     background-image:  url("./images/gameboy.png"),url("./images/fondo.jpg");
     background-size:50vh,auto;
     background-repeat: no-repeat, no-repeat;
     background-position: center center;
-    background-attachment: fixed
+    background-attachment: fixed;
+    
 }
 
 #game {
@@ -27,19 +28,19 @@ body {
     border-radius: 8px;    
     background-color: #000;
     display: flex;
-    margin-top: 6vh;
-    margin-left: 5vh;
+    margin-top: 5vh;
+    margin-left: 7vh;
     height: 31.5vh;
     width: 36vh;
-    margin-bottom: 0px;
+    margin-bottom: 0vh;
 }
 .btns{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     width: 100%;
-    margin-bottom: 20.5vh;
-    margin-right: 29vh;
+    margin-bottom: 21vh;
+    margin-right: 26.5vh;
     #up, #down {margin-left: 100%; margin-right: 100%;};
 }
 
@@ -50,7 +51,6 @@ button {
     padding: 15px 21px;;
     color: #222;
     margin: 5px 10px 0px;
-
 }
 .rotate-button {
     transform: rotate(90deg);
@@ -58,8 +58,8 @@ button {
 
 .messages{
     position: absolute;
-    font-size:2vh;
-    left: 75%;
+    font-size: 1rem;
+    left: 5vw;
     top: 20%;
 }
 p {
@@ -67,14 +67,14 @@ p {
     background-color: #000;
     padding: 10px;
     border-radius: 5px;
-    color: #1bF;
+    color: #ddf;
     text-shadow: 0 0 5px #1bF,0 0 5px #1bF, 0 0 5px #1bF,0 0 5px #1bF ;
 }
 
 #welcome-menu{
     position: absolute;
     background-color: #000;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     color: #fff;
     display: flex;
@@ -89,7 +89,7 @@ h1 {
     float: left;
     color: #fff;
     position: relative;
-    font-size: 100px;
+    font-size: 8em;
     font-family: press_start_2pregular;
 }
 
@@ -99,18 +99,21 @@ h1 span{
     width: 0;
     height: auto;
     background: #000;
-    border-left: 4px solid #000;
-    border-top: 20px solid #000;
+    border-left: 0.2em solid #000;
+    border-top: 0.5em solid #000;
     animation: maquina 3s infinite alternate steps(8);
     font-family: press_start_2pregular;
+    bottom: 1vh;
 }
 
 h2{
     font-family: press_start_2pregular;
+    font-size: 2em;
 }
 #start-button {
     font-family: press_start_2pregular;
     color: #fff;
+    font-size: 1em;
     transition: 1s linear infinite;
 }
 
@@ -142,7 +145,21 @@ h2{
     background-position: center center;
     background-attachment: fixed;
     }
-}
+    h1{
+        font-size: 14vw;
+    }
+    h1 span {
+        border-top: 3vw solid #000;
+      }
+    h2 {
+        font-size: 6vw;
+      }
+    
+    #start-button {
+
+        font-size: 6vw;
+      }
+    }
 
 @media (max-width:500px){
     .btns{
@@ -151,7 +168,52 @@ h2{
     .game-container{
         margin-top: 2.5vh;
     }
+   
+    .welcome-menu{
+        display: none;
+    }
+  h1 {
+    font-size: 18vw;
+  }
+
+  h1 span {
+    border-top: 4vw solid #000;
+  }
+
+  h2 {
+    font-size: 8vw;
+    left: 0px;
+  }
+
+  #start-button {
+ 
+    font-size: 8vw;
+  }
 }
+
+@media (max-width: 410px) {
+    .welcome-menu {
+      justify-content: start;
+      height: auto;
+    }
+  
+    h1 {
+      font-size: 3em;
+    }
+  
+    h1 span {
+      border-top: 0.5em solid #000;
+      bottom: 0.1em;
+    }
+  
+    h2 {
+      font-size: 1em;
+    }
+  
+    #start-button {
+      font-size: 0.6em;
+    }
+  }
 
 @media (max-width: 350px) {
     body {

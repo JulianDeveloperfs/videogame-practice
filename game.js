@@ -115,6 +115,9 @@ function startGame() {
 }
 
 function movePlayer () {
+    playerPosition.x = Math.round(playerPosition.x* 100) / 100;
+    playerPosition.y = Math.round(playerPosition.y* 100) / 100;
+
     const giftCollisionX = playerPosition.x.toFixed(1)==giftPosition.x.toFixed(1);
     const giftCollisionY = playerPosition.y.toFixed(1)==giftPosition.y.toFixed(1);
     const giftCollision= giftCollisionX && giftCollisionY;
@@ -138,22 +141,23 @@ function movePlayer () {
     game.fillText(emojis["PLAYER"],playerPosition.x,playerPosition.y);
     console.log(playerPosition.x,playerPosition.y);
     } 
-function gameWin(){
-    clearInterval(timeInterval);
-    const recordTime= localStorage.getItem("record_time");
-    const playerTime = Number((Date.now()-timeStart)/1000);
-   
-    if (recordTime){
-        if (recordTime>= playerTime){
-            localStorage.setItem("record_time",playerTime);
-            pResult.innerHTML= "You're a legend!";
-        } else pResult.innerHTML= "Good luck next time";
-    }else {
-        localStorage.setItem("record_time",playerTime);
-        pResult.innerHTML= "Good, but you can do it much better :)";
-    }
+    function gameWin() {
+        clearInterval(timeInterval);
+        const recordTime = parseFloat(localStorage.getItem("record_time")); // Convertir a número
+        const playerTime = Number((Date.now() - timeStart) / 1000);
     
-}
+        console.log(recordTime);
+    
+        if (recordTime) {
+            if (recordTime >= playerTime) {
+                localStorage.setItem("record_time", playerTime.toString()); // Convertir a cadena antes de guardar
+                pResult.innerHTML = "You're a legend!";
+            } else pResult.innerHTML = "Good luck next time";
+        } else {
+            localStorage.setItem("record_time", playerTime.toString()); // Convertir a cadena antes de guardar
+            pResult.innerHTML = "Good, but you can do it much better :)";
+        }
+    }
 
 function showLives(){
     spanLives.innerHTML = emojis["HEART"].repeat(lives);
